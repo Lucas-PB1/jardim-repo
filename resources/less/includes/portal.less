@@ -1,0 +1,379 @@
+@color1: #004AAD;
+@color2: #F5F5F4;
+@color3: #000000;
+@color4: #0CC0DF;
+@color5: #5DE0E6;
+@color6: #226E84;
+@color7: #A8D4E0;
+@color8: #DCF7FF;
+
+
+
+.portal {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to left, @color1, @color3)  !important ;
+}
+
+#content{
+    min-height: 80%;
+
+}
+
+.custom-bg {
+    background-color: @color1;
+    color: @color2;
+    padding: 30px;
+}
+
+.custom-text {
+    max-width: 100%;
+    height: 100%;
+    /* Ajuste a altura conforme necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom-image {
+    max-width: 100%;
+    height: 10%;
+    /* Ajuste a altura conforme necessário */
+    align-self: flex-start;
+    /* Alinha a imagem ao topo do container */
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha os elementos ao topo */
+}
+
+.ebook-list {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.ebook-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.ebook-details {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.ebook-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.ebook-author {
+    color: #6c757d;
+}
+
+.ebook-price {
+    font-weight: bold;
+}
+
+.ebook-description {
+    color: #6c757d;
+}
+
+.buy-button {
+    background-color: @color1  !important;
+    border: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.custom-text {
+    max-width: 100%;
+    height: 100%;
+    /* Ajuste a altura conforme necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom-image {
+    max-width: 100%;
+    height: 10%;
+    /* Ajuste a altura conforme necessário */
+    align-self: flex-start;
+    /* Alinha a imagem ao topo do container */
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha os elementos ao topo */
+}
+
+/* Classe para os cards com altura fixa */
+.fixed-height-card {
+    height: 500px;
+    /* Defina a altura desejada para os cards */
+}
+
+/* Estilo para as imagens nos cards para preencher o espaço verticalmente */
+.fixed-height-card .card-img-top {
+    object-fit: cover;
+    height: 70%;
+    /* Defina a altura da imagem dentro do card */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 30px;
+    /* Tamanho do ícone da seta */
+    color: rgba(239, 239, 239, 0.488);
+    /* Cor das setas */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Cor de fundo das setas (com transparência) */
+    border-radius: 0%;
+    /* Borda circular */
+    padding: 10px;
+    /* Espaçamento interno das setas */
+    transition: background-color 0.3s ease;
+    /* Transição suave da cor de fundo */
+}
+
+/* Estilo para as setas de navegação quando passar o mouse sobre elas */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(194, 194, 194, 0.538);
+    /* Nova cor de fundo ao passar o mouse */
+    color: #fff;
+    /* Nova cor das setas ao passar o mouse */
+    text-decoration: none;
+    /* Remover decoração de link ao passar o mouse */
+}
+
+.navbar-nav {
+    font-size: 18px;
+    /* Tamanho da fonte */
+    line-height: 1.5;
+    /* Espaçamento entre as linhas */
+}
+
+.footer-portal {
+    display: block;
+    background-color: #000;
+    text-align: center;
+    color: #ffffff !important;
+}
+
+.footer-portal a {
+    text-decoration: none !important;
+}
+
+.accessibility a{
+    text-decoration: none !important;
+    padding: 0.6rem;
+    margin: 1px;
+    font-size: 15px;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;    
+    background:  rgba(0, 0, 0, 0.2);
+    color: @color2;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+.card-text {
+    color: #6c757d;
+}
+
+.btn-custom {
+    background-color: @color1;
+    color: @color2;
+}
+
+.btn-custom:hover {
+    background-color: #002c5c;
+    color: @color2;
+}
+
+.navbar-with-divider {
+    border-bottom: 5px solid rgb(232, 230, 230);
+    /* Cor e estilo da linha de separação */
+}
+
+.divider {
+    border: 1;
+    /* Remove a borda padrão do <hr> */
+    border-top: 10px solid #fff;
+    /* Cor e estilo da linha de separação */
+    margin: 0;
+    padding: 0;
+}
+
+.background-text {
+    background-color: #e4e6eb;
+    /* Cor de fundo desejada */
+    color: #fff;
+    /* Cor do texto */
+    padding: 8px 12px;
+    /* Espaçamento interno para o texto */
+    border-radius: 10px;
+    /* Raio do canto */
+    max-width: 30%;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.p-portal {
+    color: #fff;
+    font-size: 18px;
+}
+
+.title1 {
+    font-size: 60px;
+    color: @color2;
+    font-weight: bold;
+}
+
+.img-main {
+    position: absolute;
+    top: 32%;
+    left: 58%;
+    z-index: 999;
+}
+
+@media (max-width: 699px) {
+    .img-main {
+        width: 14%;
+        /* 3 vezes menor do tamanho padrão */
+        height: 26.67%;
+        /* 3 vezes menor do tamanho padrão */
+    }
+}
+
+/* Quando a largura da tela for menor que 1000 pixels */
+@media (max-width: 999px) {
+    .img-main {
+        width: 42%;
+        /* Metade do tamanho original */
+        height: 25%;
+        /* Metade do tamanho original */
+    }
+}
+
+/* Quando a largura da tela for igual ou maior a 1000 pixels */
+@media (min-width: 1000px) {
+    .img-main {
+        width: 42%;
+        /* Tamanho completo original */
+        height: 60%;
+        /* Tamanho completo original */
+    }
+}
+
+
+#logo {
+    z-index: 10000;
+}
+
+//   .breadcrumb {
+//     display: flex; /* Define um display flex para criar uma barra horizontal */
+//     flex-wrap: wrap; /* Permite que as migalhas de pão quebrem para a próxima linha se não couberem na largura */
+//     background-color: @color7; /* Adicione um plano de fundo ou cor de fundo desejado */
+//     padding: 10px; /* Ajuste o preenchimento conforme necessário */
+// }
+
+.breadcrumb-item.active {
+    // padding: 0; /* Remova o preenchimento padrão dos itens de migalhas de pão */    
+    color: rgba(247, 243, 243, 0.661)
+}
+
+.breadcrumb-item a {
+    // padding: 0; /* Remova o preenchimento padrão dos itens de migalhas de pão */    
+    color: white !important;
+    text-decoration: none;
+}
+
+// .breadcrumb-item + .breadcrumb-item::before {
+//     content: "›"; /* Adicione um separador entre os itens de migalhas de pão */
+//     padding: 0 5px; /* Ajuste o espaçamento entre os itens conforme necessário */
+// }
+.left-topbar {
+    font-size: 12px;
+}
+
+.img-ebook-show{
+    height: 20%;
+    width: 20%;
+}
+
+.btn-primary {
+    background-color: @color6;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.content-topbar{
+    height: 14%;
+}
+
+#img-sobre{
+    position: absolute; 
+    top: 10%; 
+    left: 58%; 
+    width: 40%; 
+    height: 100%; 
+    z-index: 999;
+}
+
+@media screen and (max-width: 999px) {
+
+    .navbar{
+        
+        .container {
+            display: inline !important;
+        }
+    } 
+
+    .img-main {
+        width: 40%;
+    }
+
+    .content-topbar{
+        height: 2%;
+    }
+    
+    #content{     
+     min-height: 60%;
+    }
+
+
+    #img-sobre{
+        position: absolute;        
+        left: 58%;
+        z-index: 999;
+        height: 40%;
+    }
+
+}
