@@ -33,6 +33,7 @@ class GaleryController extends Controller
     public function galery($table, $id)
     {
         $modelInstance = resolve("App\\Models\\CMS\\" . ucfirst($table));
+        // dd($modelInstance);
         return response()->json($modelInstance::where('id', $id)->with('galeria')->first()->galeria, 200);
     }
 

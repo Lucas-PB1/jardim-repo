@@ -2,13 +2,14 @@
 
 namespace App\Models\CMS;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Traits\HasGaleria;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Galeria extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasGaleria;
 
     protected $table = 'galerias';
 
@@ -16,6 +17,7 @@ class Galeria extends Model
         
         'nome-da-galeria',
         'icone',
+        'slug'
 
     ];
 

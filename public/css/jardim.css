@@ -1,0 +1,141 @@
+body {
+    background-color: #fdf5e6;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.photo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 15px 5px rgba(255, 192, 203, 0.5),
+        0 0 25px 10px rgba(152, 251, 152, 0.5),
+        0 0 35px 15px rgba(173, 216, 230, 0.5);
+    width: auto;
+    height: auto;
+}
+
+.photo:hover {
+    transform: scale(1.05);
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 410px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #333;
+    border-radius: 5px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.gallery-title {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 4px #f0e68c;
+    margin: 40px 0 20px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #333;
+    width: 36px;
+    height: 36px;
+    animation: spin 2s linear infinite;
+}
+
+.view-button,
+.download-button {
+    border: none;
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff69b4;
+}
+
+.download-button {
+    background-color: #7ec8e3;
+}
+
+.view-button:hover,
+.download-button:hover {
+    background-color: #d85f9b;
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo {
+        box-shadow: 0 0 10px 3px rgba(255, 192, 203, 0.5),
+            0 0 15px 6px rgba(152, 251, 152, 0.5),
+            0 0 20px 9px rgba(173, 216, 230, 0.5);
+    }
+
+    .gallery-title {
+        font-size: 1.8em;
+        margin-top: 20px;
+    }
+
+    .image-wrapper {
+        height: 300px;
+    }
+}

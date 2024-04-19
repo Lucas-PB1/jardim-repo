@@ -7,12 +7,19 @@
         @method('PUT')
     @endisset
 
-    {{-- @dd($data->destaque); --}}
-
     <div class="row ms-0">
         <div class="row">
             <x-generator.input id="imagem-principal" titulo="Imagem de Fundo" size="6" tipo='file'
                 :dados="isset($data) ? $data->destaque : null" mandatory="true" />
+
+            <div class="col-md-12">
+                @isset($data)
+                    <x-generator.input id="slug" titulo="URL" size="6" tipo='text'
+                        placeholder="Insira a slug" dados="{{ isset($data) ? $data->{'slug'} : null }}" mandatory="true"
+                        prepend="http://jardim/"
+                        linkRoute="{{ route('jardim.index', $data->slug) }}" />
+                @endisset
+            </div>
         </div>
 
         <x-generator.input id="nome-da-galeria" titulo="Nome da Galeria" size="6" tipo='text'
@@ -27,3 +34,9 @@
         </button>
     </div>
 </form>
+
+@isset($data)
+    <div class="row">
+        <x-cms.partials.galery :id="$data->id" table="Galeria" />
+    </div>
+@endisset

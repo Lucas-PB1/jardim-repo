@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('galerias', function (Blueprint $table) {
             $table->id();
             
+            $table->text('slug');
             $table->text('nome-da-galeria');
             $table->text('imagem-principal')->nullable();
             $table->text('icone')->nullable();

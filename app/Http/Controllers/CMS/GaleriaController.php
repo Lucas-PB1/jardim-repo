@@ -63,16 +63,17 @@ class GaleriaController extends Controller
     public function store(GaleriaRequest $request)
     {
         try {
+            $request->merge(['slug' => slug_fix($request->{'nome-da-galeria'})]);
+
             $resultado = $this->repository->upInsert($request);
             if ($resultado) {
                 $this->fileSaveDestaque($request, $resultado->id, 'imagem-principal', $this->table->getTable());
 
                 return redirect()
-                    ->route('galeria.index', [$resultado])
+                    ->route('galeria.edit', $resultado->id)
                     ->with('success', 'Registro cadastro com sucesso');
             }
         } catch (Exception $exception) {
-            dd($exception);
         }
         return redirect()->back();
     }
@@ -92,7 +93,7 @@ class GaleriaController extends Controller
                 $this->fileSaveDestaque($request, $id, 'imagem-principal', $this->table->getTable());
 
                 return redirect()
-                    ->route('galeria.index', [$id])
+                    ->route('galeria.index')
                     ->with('success', 'Registro cadastro com sucesso');
             }
         } catch (Exception $exception) {

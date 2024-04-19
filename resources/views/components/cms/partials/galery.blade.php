@@ -1,15 +1,16 @@
-<div class="tab-pane" id="galery">
+<x-app-layout>
+    <div class="tab-pane" id="galery">
 
-    <form action="{{ route('galery.store', [$table, $id]) }}" class="dropzone" id="dropzone">
-        @csrf
-    </form>
+        <form action="{{ route('galery.store', [$table, $id]) }}" class="dropzone" id="dropzone">
+            @csrf
+        </form>
 
-    <div class="row" id="galeria"> </div>
+        <div class="row" id="galeria"> </div>
 
-    @section('scripts')
-        <script>
-            chargeGalery("{{ $table }}", {{ $id }})
-        </script>
-    @endsection
-</div>
-
+        @section('other-scripts')
+            <script>
+                chargeGalery("{{ $table }}", {{ $id }})
+            </script>
+        @endsection
+    </div>
+</x-app-layout>

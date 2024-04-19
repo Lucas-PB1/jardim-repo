@@ -1,9 +1,10 @@
 let paramsGalery = [];
 
+if (document.querySelector("#dropzone")) new Dropzone("#dropzone", optionsDropzone);
+
 async function chargeGalery(table, id) {
     paramsGalery = [table, id];
     document.querySelector('#galeria').innerHTML = '';
-    Dropzone.options.dropzone = optionsDropzone;
 
     const data = await myFetch(`/cms/galeria/${table}/${id}`);
 
@@ -31,10 +32,10 @@ async function chargeGalery(table, id) {
 
             const galleryBody = create_element({ tag: 'div', classes: 'gallery-body card-inner align-center justify-center flex-wrap g-2' });
 
-            const btnGroup = create_element({ tag: 'div' });
-            const viewBtn = createButton('btn-primary', 'ni ni-eye-alt-fill', [{ key: 'href', value: dados.path }, { key: 'target', value: '_blank' }]);
-            const downloadBtn = createButton('btn-success', 'ni ni-download', [{ key: 'href', value: dados.path }, { key: 'download', value: '' }]);
-            const deleteBtn = createButton('btn-danger', 'ni ni-trash-fill', [{ key: 'type', value: 'submit' }], 'button');
+            const btnGroup = create_element({ tag: 'div', classes: 'text-center' });
+            const viewBtn = createButton('btn-primary', 'fa fa-eye', [{ key: 'href', value: dados.path }, { key: 'target', value: '_blank' }]);
+            const downloadBtn = createButton('btn-success', 'fa fa-download', [{ key: 'href', value: dados.path }, { key: 'download', value: '' }]);
+            const deleteBtn = createButton('btn-danger', 'fa fa-trash', [{ key: 'type', value: 'submit' }], 'button');
 
             btnGroup.append(viewBtn, downloadBtn, deleteBtn);
             galleryBody.append(btnGroup);
@@ -47,10 +48,10 @@ async function chargeGalery(table, id) {
                 e.preventDefault();
                 const result = await myFetch(`/cms/delete/archives/${dados.id}`, 'DELETE');
                 if (result.success) {
-                    toastr.success('Sucesso ao deletar imagem de galeria');
+                    // toastr.success('Sucesso ao deletar imagem de galeria');
                     chargeGalery(table, id);
                 } else {
-                    toastr.error('Erro ao deletar imagem de galeria');
+                    // toastr.error('Erro ao deletar imagem de galeria');
                 }
             });
         });

@@ -1,29 +1,22 @@
 <?php
 
-use App\Http\Controllers\AlunoAuthController;
-use App\Http\Controllers\Portal\CarrinhoController;
-use App\Http\Controllers\CMS\AlunoController as CMSAlunoController;
-use App\Http\Controllers\CMS\LogsController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DeleteController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CMS\DashboardController;
+
 use App\Http\Controllers\CrudsController;
-use App\Http\Controllers\Portal\PortalController;
-use App\Http\Controllers\Portal\ConsultoriaController;
-use App\Http\Controllers\Portal\AlunoController;
-use App\Http\Controllers\Portal\EbooksController;
-use App\Http\Controllers\Portal\ContatoController;
-use App\Http\Controllers\Portal\SobreController;
-use App\Http\Controllers\Portal\ProdutosController;
-use App\Http\Controllers\CMS\EBooksController as EbooksControllerCMS;
-use App\Http\Controllers\CMS\MentoriasController;
+use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\CMS\LogsController;
+use App\Http\Controllers\CMS\UserController;
+use App\Http\Controllers\CMS\RolesController;
+use App\Http\Controllers\CMS\GaleriaController;
+use App\Http\Controllers\CMS\DashboardController;
 use App\Http\Controllers\CMS\RedesSociaisController;
 use App\Http\Controllers\CMS\ConfiguraçõesController;
-use App\Http\Controllers\CMS\RolesController;
-use App\Http\Controllers\CMS\UserController;
-use App\Http\Controllers\Portal\LoginAlunoController;
-use App\Http\Controllers\CMS\GaleriaController;
+use App\Http\Controllers\Portal\JardimController;
+use App\Http\Controllers\Portal\PortalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +39,8 @@ Route::middleware('auth')->group(function () {
 
 // Portal
 Route::get('/', [PortalController::class, 'index'])->name('home.index');
+Route::get('/jardim/{slug}', [JardimController::class, 'index'])->name('jardim.index');
+Route::get('api/jardim/{slug}', [JardimController::class, 'indexApi']);
 
 // CMS
 Route::middleware('auth')->prefix('cms')->group(function () {
@@ -72,6 +67,12 @@ Route::middleware('auth')->prefix('cms')->group(function () {
     // Update API
     Route::prefix('update')->group(function () {
         Route::middleware(['can:update_cargos'])->post('/cargos', [RolesController::class, 'managePerms']);
+    });
+
+    // Galerias
+    Route::prefix('galeria')->group(function () {
+        Route::get('/{table}/{id}', [GaleryController::class, 'galery'])->name('galery.index');
+        Route::post('/{table}/{id}', [GaleryController::class, 'store'])->name('galery.store');
     });
 
     // Config
