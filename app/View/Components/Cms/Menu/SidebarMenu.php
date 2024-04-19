@@ -19,11 +19,9 @@ class SidebarMenu extends Component
         $this->siteName = Configurações::where('slug', 'nome-do-site')->first()->valor;
 
         $this->menus = [
-            ['nome' => 'E-Books', 'link' => route('ebooks.index')],
-            ['nome' => 'Mentorias', 'link' => route('mentorias.index')],
-            ['nome' => 'Redes Sociais', 'link' => route('redes-sociais.index')],
-            ['nome' => 'Alunos', 'link' => route('alunos.index')],
             ['nome' => 'Usuários', 'link' => route('usuarios.index')],
+            ['nome' => 'Redes Sociais', 'link' => route('redes-sociais.index')],
+            ['nome' => 'Galeria', 'link' => route('galeria.index')],
             ['nome' => 'Logs', 'link' => route('logs.index')],
         ];
     }

@@ -23,6 +23,7 @@ use App\Http\Controllers\CMS\ConfiguraçõesController;
 use App\Http\Controllers\CMS\RolesController;
 use App\Http\Controllers\CMS\UserController;
 use App\Http\Controllers\Portal\LoginAlunoController;
+use App\Http\Controllers\CMS\GaleriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,25 +50,23 @@ Route::get('/', [PortalController::class, 'index'])->name('home.index');
 // CMS
 Route::middleware('auth')->prefix('cms')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
+
+    Route::get('/', fn() => redirect()->route('dashboard'));
+
     Route::middleware(['can:read_cruds'])->resource('/cruds', CrudsController::class);
     Route::middleware(['can:read_logs'])->resource('/logs', LogsController::class);
-    Route::middleware(['can:read_ebooks'])->resource('/ebooks', EbooksControllerCMS::class);
-    Route::middleware(['can:read_mentorias'])->resource('/mentorias', MentoriasController::class);
     Route::middleware(['can:read_redes-sociais'])->resource('/redes-sociais', RedesSociaisController::class);
     Route::middleware(['can:read_cargos'])->resource('/cargos', RolesController::class);
-    Route::middleware(['can:read_alunos'])->resource('/alunos', CMSAlunoController::class);
-
+    Route::middleware(['can:read_galeria'])->resource('/galeria', GaleriaController::class);
     Route::middleware(['can:read_usuarios'])->resource('/usuarios', UserController::class);
 
     Route::prefix('api')->group(function () {
         Route::get('/cruds', [CrudsController::class, 'indexAPI']);
         Route::get('/logs', [LogsController::class, 'indexAPI']);
-        Route::get('/ebooks', [EbooksControllerCMS::class, 'indexAPI']);
-        Route::get('/mentorias', [MentoriasController::class, 'indexAPI']);
         Route::get('/redes-sociais', [RedesSociaisController::class, 'indexAPI']);
         Route::get('/users', [UserController::class, 'indexAPI']);
         Route::get('/cargos', [RolesController::class, 'indexAPI']);
-        Route::get('/alunos', [CMSAlunoController::class, 'indexAPI']);
+        Route::get('/galeria', [GaleriaController::class, 'indexAPI']);
     });
 
     // Update API
@@ -82,3 +81,4 @@ Route::middleware('auth')->prefix('cms')->group(function () {
     // Utils
     Route::delete('delete/{tabela}/{id}', [DeleteController::class, 'delete'])->name('delete');
 });
+

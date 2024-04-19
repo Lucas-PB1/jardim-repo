@@ -18,7 +18,9 @@ class PermissionSeeder extends Seeder
             'Cruds',
             'Logs',
             'Usuarios',
-            'Cargos'
+            'Cargos',
+            'Galeria',
+            'Redes Sociais'
         ];
 
         collect($modules)->each(
