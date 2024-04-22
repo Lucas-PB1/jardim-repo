@@ -1,9 +1,6 @@
 async function fetchImageUrls() {
-    const slug = document.querySelector('#slug').value;
-    await fetch(`/api/jardim/${slug}`)
-        .then(response => response.json())
-        .then(displayImages)
-        .catch(error => console.error('Error fetching images:', error));
+    const images = await myFetch(`/api/jardim/${slug.value}`);
+    displayImages(images);
 }
 
 function displayImages(urls) {
@@ -25,43 +22,26 @@ function displayImages(urls) {
 }
 
 function createImageWrapper(url, onLastImageVisible) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('image-wrapper');
+    const wrapper = create_element({ tag: 'div', classes: 'col-md-2 shadow-sm p-2 position-relative' });
+    const spinner = create_element({ tag: 'div', classes: 'image-spinner' });
+    const imgElement = createImageElement(url, spinner, () => onLastImageVisible ? onLastImageVisible() : '');
 
-    const loadingOverlay = document.createElement('div');
-    loadingOverlay.classList.add('loading-overlay');
-
-    const spinner = document.createElement('div');
-    spinner.classList.add('spinner');
-    loadingOverlay.appendChild(spinner);
-
-    wrapper.appendChild(loadingOverlay);
-
-    const imgElement = createImageElement(url, loadingOverlay, () => {
-        if (onLastImageVisible) onLastImageVisible();
-    });
-
+    wrapper.appendChild(spinner);
     wrapper.appendChild(imgElement);
 
-    let name = url.replace('storage/photos/', '', url);
-    name = name.replace('.webp', '', name);
-
-    // const title = document.createElement('div');
-    // title.innerHTML = name;
-    // wrapper.append(title);
-
+    let name = url.replace('storage/photos/', '').replace('.webp', '');
+    
     return wrapper;
 }
 
-function createImageElement(url, loadingOverlay, onVisible) {
-    const img = document.createElement('img');
+function createImageElement(url, spinner, onVisible) {
+    const img = create_element({ tag: 'img', classes: 'w-100 object-cover expand-scale', params: [{ key: 'alt', value: 'Imagem da Galeria' }] });
     img.dataset.src = url;
-    img.classList.add('photo');
-    img.alt = 'Imagem da Galeria';
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                spinner.style.display = 'block';
                 img.src = img.dataset.src;
                 observer.unobserve(entry.target);
             }
@@ -69,19 +49,11 @@ function createImageElement(url, loadingOverlay, onVisible) {
     }, { rootMargin: '50px' });
 
     observer.observe(img);
-
     img.onload = () => {
-        setTimeout(() => {
-            if (loadingOverlay && loadingOverlay.parentNode) {
-                loadingOverlay.parentNode.removeChild(loadingOverlay);
-            }
-        }, 200);
-        if (onVisible) onVisible();
+        spinner.style.display = 'none'; 
+        if(onVisible) onVisible();
     };
 
     return img;
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetchImageUrls();
-});
+document.addEventListener("DOMContentLoaded", () => fetchImageUrls());

@@ -8,16 +8,16 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('usuarios.update', $user->id) }}">
+    <form method="post" action="{{ route('usuarios.update', Auth::user()->id) }}">
         @csrf
         @method('put')
-        <input type="text" class="form-control d-none" value="{{ $user->id }}" name="userId">
+        <input type="text" class="form-control d-none" value="{{ Auth::user()->id }}" name="userId">
 
         <x-cms.campos.input identificador="name" classes="mt-2" tipo="text" titulo="Nome" placeholder="Insira Seu Nome"
-            valor="{{ old('name', $user->name) }}" />
+            valor="{{ old('name', Auth::user()->name) }}" />
 
         <x-cms.campos.input identificador="email" classes="mt-2" tipo="email" titulo="E-mail"
-            placeholder="exemplo@gmail.com" valor="{{ old('email', $user->email) }}" />
+            placeholder="exemplo@gmail.com" valor="{{ old('email', Auth::user()->email) }}" />
 
         <div>
             @if (Auth::user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !Auth::user()->hasVerifiedEmail())

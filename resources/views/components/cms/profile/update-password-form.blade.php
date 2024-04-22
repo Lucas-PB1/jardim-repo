@@ -5,10 +5,10 @@
         </p>
     </header>
 
-    <form method="post" action="{{ route('usuarios.update', $user->id) }}" class="mt-6">
+    <form method="post" action="{{ route('usuarios.update', Auth::user()->id) }}" class="mt-6">
         @csrf
         @method('put')
-        <input type="text" class="form-control d-none" value="{{ $user->id }}" name="userId">
+        <input type="text" class="form-control d-none" value="{{ Auth::user()->id }}" name="userId">
 
         <x-cms.campos.input identificador="current_password" classes="mt-2" tipo="password" titulo="Senha Atual"
             placeholder="Senha Atual" />

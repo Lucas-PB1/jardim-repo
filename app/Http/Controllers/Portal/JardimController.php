@@ -15,7 +15,7 @@ class JardimController extends Controller
     }
 
     public function index($slug){
-        return view('portal.index', ['slug' => $slug]);
+        return view('portal.jardim', ['data' => $this->table->where('slug', $slug)->first()]);
     }
 
     public function indexApi($slug){

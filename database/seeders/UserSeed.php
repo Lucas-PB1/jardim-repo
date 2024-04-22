@@ -14,10 +14,11 @@ class UserSeed extends Seeder
      */
     public function run(): void
     {
-        $commonPassword = Hash::make('clearapp');
+        $commonPassword = Hash::make('leapp132');
 
         $users = [
-            ['name' => 'Lucas', 'email' => 'lucasoaresnet@gmail.com', 'role' => 'super-admin']
+            ['name' => 'Lucas', 'email' => 'lucasoaresnet@gmail.com', 'role' => 'super-admin'],
+            ['name' => 'Leticia', 'email' => 'leticia2013rclele@gmail.com', 'role' => 'super-admin']
         ];
 
         foreach ($users as $userData) {

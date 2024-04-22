@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Models\CMS\Galeria;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class PortalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $table;
+
+    public function __construct()
+    {
+        $this->table = new Galeria();
+    }
+
     public function index()
     {
-
-        return view('portal.index');
+        return view('portal.index', ['jardins' => $this->table->all()]);
     }
 }

@@ -11,11 +11,11 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="post" action="{{ route('usuarios.destroy', $user->id) }}" class="p-6">
+                <form method="post" action="{{ route('usuarios.destroy', Auth::user()->id) }}" class="p-6">
                     @csrf
                     @method('delete')
 
-                    <input type="text" class="form-control d-none" value="{{ $user->id }}" name="userId">
+                    <input type="text" class="form-control d-none" value="{{ Auth::user()->id }}" name="userId">
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="confirmUserDeletionModalLabel">{{ __('Delete Account') }}</h5>

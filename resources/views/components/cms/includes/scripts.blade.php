@@ -7,7 +7,6 @@
 <script src="{{ url('modules/dropzone/dropzone-min.js') }}"></script>
 <script src="{{ url('modules/select2/select2.min.js') }}" defer></script>
 
-
 <script src="{{ url('js/exec.js') }}"></script>
 <script src="{{ url('js/functions.js') }}"></script>
 <script src="{{ url('js/table.js') }}"></script>

@@ -41,7 +41,6 @@ class RedesSociaisController extends Controller
         $columns = [
             'id',
             'nome as Nome',
-            'icone as Ícone',
             'link as Link'
         ];
 

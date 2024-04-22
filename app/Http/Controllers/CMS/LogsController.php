@@ -32,8 +32,8 @@ class LogsController extends Controller
         $columns = [
             'modulo as Modulo',
             'operacao as Operação',
-            DB::raw('SUBSTRING(descricao, 1, 150) as Descrição'),
-            DB::raw('to_char(created_at, \'DD/MM/YYYY HH24:MI:SS\') as "Data de Criação"')
+            DB::raw('SUBSTR(descricao, 1, 150) as Descrição'),
+            DB::raw('DATE_FORMAT(created_at, \'%d/%m/%Y %H:%i:%s\') as `Data de Criação`')
         ];
 
         $formattedColumns = $this->formatColumns($columns);

@@ -2,10 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <x-includes.metatags />
+    <x-cms.includes.metatags />
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <x-includes.styles />
-    <x-includes.scripts />
+    <x-cms.includes.styles />
 </head>
 
 <body id="body-pd antialised">
@@ -23,6 +22,8 @@
         </div>
         @include('auth.layout.footer')
     </section>
+
+    <x-cms.includes.scripts />
 </body>
 
 </html>
