@@ -19,7 +19,7 @@ class TimelineRequest extends FormRequest
         return [
             
             'nome-do-evento' => ['required'],
-            'data' => ['required'],
+            'ordem' => ['required'],
             'texto' => ['required'],
 
         ];
@@ -28,11 +28,7 @@ class TimelineRequest extends FormRequest
     public function messages(): array
     {
         return [
-           
-            'nome-do-evento.required' => 'Este campo é obrigatório.',
-            'data.required' => 'Este campo é obrigatório.',
-            'texto.required' => 'Este campo é obrigatório.',
-
+            '*.required' => 'Este campo é obrigatório.',
         ];
     }
 }

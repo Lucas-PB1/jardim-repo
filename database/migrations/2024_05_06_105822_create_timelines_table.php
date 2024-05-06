@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             
             $table->text('nome-do-evento');
-            $table->text('data');
+            $table->text('ordem');
             $table->text('texto');
 
             $table->softDeletes();

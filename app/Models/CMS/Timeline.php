@@ -15,7 +15,7 @@ class Timeline extends Model
     protected $fillable = [
         
         'nome-do-evento',
-        'data',
+        'ordem',
         'texto',
 
     ];

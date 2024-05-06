@@ -42,6 +42,7 @@ Route::get('api/jardim/{slug}', [JardimController::class, 'indexApi']);
 Route::get('/jardim', [PortalController::class, 'index'])->name('home.index');
 Route::get('/jardim/{slug}', [JardimController::class, 'index'])->name('jardim.index');
 Route::get('/timeline', [PortalTimelineController::class, 'index'])->name('timeline.index');
+Route::get('/timeline/{id}', [PortalTimelineController::class, 'show'])->name('timelines.show');
 
 // CMS
 Route::middleware('auth')->prefix('cms')->group(function () {

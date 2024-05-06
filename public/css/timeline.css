@@ -128,6 +128,13 @@ ul li .title {
   font-weight: 500;
 }
 
+@media (max-width: 600px) {
+  ul {
+    width: 100%;
+    margin-inline: 0; /* Remova a margem horizontal */
+  }
+}
+
 @media (min-width: 40rem) {
   ul {
     grid-template-columns: 1fr var(--line-w) 1fr;

@@ -17,8 +17,8 @@
         <x-generator.input id="nome-do-evento" titulo="Nome do evento" size="6" tipo='text'
             dados="{{ isset($data) ? $data->{'nome-do-evento'} : null }}" placeholder="Nome do Evento" />
 
-        <x-generator.input id="data" titulo="Data" size="6" tipo='date' classes="brData"
-            dados="{{ isset($data) ? $data->{'data'} : null }}" placeholder="00/00/0000" />
+        <x-generator.input id="ordem" titulo="Ordem" size="6" tipo='text'
+            dados="{{ isset($data) ? $data->{'ordem'} : null }}" />
 
         <x-generator.textarea id="texto" titulo="Texto" size="12" tipo='text'
             dados="{{ isset($data) ? $data->{'texto'} : null }}" />

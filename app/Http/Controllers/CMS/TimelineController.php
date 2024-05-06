@@ -39,12 +39,12 @@ class TimelineController extends Controller
         return response()->json(
             [
                 'content' => $this->table
-                    ->orderBy('id', "DESC")
+                    ->orderBy('ordem', "DESC")
                     ->get(
                         [
                             'id',
                             'nome-do-evento as Nome do evento',
-                            'data as Data',
+                            'ordem as Ordem',
                             'texto as Texto',
                         ]
                     ),
@@ -97,7 +97,6 @@ class TimelineController extends Controller
                     ->with('success', 'Registro cadastro com sucesso');
             }
         } catch (Exception $exception) {
-            dd($exception);
         }
         return redirect()->back();
     }

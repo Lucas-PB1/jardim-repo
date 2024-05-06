@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Http\Traits\AppTrait;
 use App\Models\CMS\Timeline;
 use App\Http\Controllers\Controller;
 
 class TimelineController extends Controller
 {
+    use AppTrait;
+
     public $table;
     public function __construct()
     {
@@ -14,6 +17,11 @@ class TimelineController extends Controller
     }
     public function index()
     {
-        return view('portal.timeline.index', ['data' => $this->table->all()]);
+        return view('portal.timeline.index', ['data' => $this->table->orderBy('ordem', "DESC")->get()]);
+    }
+
+    public function show($id)
+    {
+        return view('portal.timeline.show', ['data' => $this->table->find($id)]);
     }
 }
