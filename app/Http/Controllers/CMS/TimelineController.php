@@ -44,8 +44,7 @@ class TimelineController extends Controller
                         [
                             'id',
                             'nome-do-evento as Nome do evento',
-                            'ordem as Ordem',
-                            'texto as Texto',
+                            'ordem as Ordem'
                         ]
                     ),
                 'tableName' => $this->table->getTable(),
