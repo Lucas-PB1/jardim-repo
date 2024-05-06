@@ -17,7 +17,7 @@ class TimelineController extends Controller
     }
     public function index()
     {
-        return view('portal.timeline.index', ['data' => $this->table->orderBy('ordem', "DESC")->get()]);
+        return view('portal.timeline.index', ['data' => $this->table->orderByRaw('CAST(ordem AS UNSIGNED) DESC')->get()]);
     }
 
     public function show($id)
