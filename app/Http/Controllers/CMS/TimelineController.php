@@ -39,7 +39,7 @@ class TimelineController extends Controller
         return response()->json(
             [
                 'content' => $this->table
-                    ->orderBy('ordem', "DESC")
+                    ->orderByRaw('CAST(ordem AS UNSIGNED) DESC')
                     ->get(
                         [
                             'id',
