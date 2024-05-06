@@ -3,13 +3,14 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && npm run summernote-copy && npm run jquery-copy && npm run toarst-copy && npm run select2-copy && npm run dropzone-copy && npm run font-awesome-copy",
+        "build": "vite build && npm run summernote-copy && npm run jquery-copy && npm run toarst-copy && npm run select2-copy && npm run dropzone-copy && npm run font-awesome-copy && npm run cropper-copy",
         "dropzone-copy": "npm run copy-dropzone-js && npm run copy-dropzone-css",
         "font-awesome-copy": "npm run copy-font-awesome-js",
         "jquery-copy": "npm run copy-jquery-assets",
         "toarst-copy": "npm run copy-toarst-js && npm run copy-toarst-css",
         "summernote-copy": "npm run copy-summernote-assets-js && npm run copy-summernote-assets-css && npm run copy-summernote-fonts",
         "select2-copy": "npm run copy-select2-js && npm run copy-select2-css && npm run copy-select2-theme",
+        "cropper-copy": "npm run copy-cropper-js && npm run copy-cropper-css",
         "copy-summernote-fonts": "cp -r node_modules/summernote/dist/font/ public/modules/summernote",
         "copy-summernote-assets-js": "cp node_modules/summernote/dist/summernote-lite.min.js public/modules/summernote",
         "copy-summernote-assets-css": "cp node_modules/summernote/dist/summernote-lite.min.css public/modules/summernote",
@@ -21,7 +22,9 @@
         "copy-select2-js": "cp node_modules/select2/dist/js/select2.min.js public/modules/select2",
         "copy-dropzone-css": "cp node_modules/dropzone/dist/dropzone.css public/modules/dropzone",
         "copy-dropzone-js": "cp node_modules/dropzone/dist/dropzone-min.js public/modules/dropzone",
-        "copy-font-awesome-js": "cp node_modules/font-awesome/css/font-awesome.min.css public/modules/font-awesome"
+        "copy-font-awesome-js": "cp node_modules/font-awesome/css/font-awesome.min.css public/modules/font-awesome",
+        "copy-cropper-js": "cp node_modules/cropperjs/dist/cropper.min.js public/modules/cropper",
+        "copy-cropper-css": "cp node_modules/cropperjs/dist/cropper.min.css public/modules/cropper"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
@@ -38,6 +41,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "cropperjs": "^1.6.2",
         "dropzone": "^6.0.0-beta.2",
         "font-awesome": "^4.7.0",
         "imask": "^7.1.3",

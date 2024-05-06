@@ -23,6 +23,7 @@ class SidebarMenu extends Component
             ['nome' => 'Redes Sociais', 'link' => route('redes-sociais.index')],
             ['nome' => 'Galeria', 'link' => route('galeria.index')],
             ['nome' => 'Logs', 'link' => route('logs.index')],
+            ['nome' => 'Timeline', 'link' => route('timeline.index')],
         ];
     }
 

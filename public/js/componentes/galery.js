@@ -16,7 +16,6 @@ async function chargeGalery(table, id) {
             const galleryImageLink = create_element({
                 tag: 'a',
                 classes: 'gallery-image popup-image',
-                params: [{ key: 'href', value: dados.path }],
                 estilos: 'height: 200px; display: block;'
             });
 
@@ -34,29 +33,81 @@ async function chargeGalery(table, id) {
 
             const btnGroup = create_element({ tag: 'div', classes: 'text-center' });
             const viewBtn = createButton('btn-primary', 'fa fa-eye', [{ key: 'href', value: dados.path }, { key: 'target', value: '_blank' }]);
+            const editBtn = createButton('btn-primary', 'fa fa-pencil');
+            const saveBtn = createButton('btn-info', 'fa fa-save');
             const downloadBtn = createButton('btn-success', 'fa fa-download', [{ key: 'href', value: dados.path }, { key: 'download', value: '' }]);
             const deleteBtn = createButton('btn-danger', 'fa fa-trash', [{ key: 'type', value: 'submit' }], 'button');
 
-            btnGroup.append(viewBtn, downloadBtn, deleteBtn);
+            btnGroup.append(viewBtn, editBtn, saveBtn, downloadBtn, deleteBtn);
             galleryBody.append(btnGroup);
             galleryCard.appendChild(galleryBody);
             galleryCol.appendChild(galleryCard);
 
             document.querySelector('#galeria').append(galleryCol);
 
+            // Event listener para deletar imagem
             deleteBtn.addEventListener('click', async (e) => {
                 e.preventDefault();
                 const result = await myFetch(`/cms/delete/archives/${dados.id}`, 'DELETE');
-                if (result.success) {
-                    // toastr.success('Sucesso ao deletar imagem de galeria');
-                    chargeGalery(table, id);
+                if (result.success) chargeGalery(table, id);
+            });
+
+            let cropperInstance = null;
+            let isEditing = false;
+
+            // Event listener para edição e rotação
+            editBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isEditing) {
+                    cropperInstance = new Cropper(galleryImage, { aspectRatio: 16 / 9 });
+                    editBtn.querySelector('.icon').classList.remove('fa-pencil');
+                    editBtn.querySelector('.icon').classList.add('fa-rotate-right');
+                    isEditing = true;
                 } else {
-                    // toastr.error('Erro ao deletar imagem de galeria');
+                    if (cropperInstance) {
+                        cropperInstance.rotate(45);
+                    }
+                }
+            });
+
+            saveBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (cropperInstance) {
+                    cropperInstance.getCroppedCanvas().toBlob((blob) => {
+
+                        console.log(data);
+                        cropperInstance.destroy();
+                        cropperInstance = null;
+                        isEditing = false;
+                        editBtn.querySelector('.icon').classList.add('fa-pencil');
+                        editBtn.querySelector('.icon').classList.remove('fa-rotate-right');
+
+                        // const formData = new FormData();
+                        // formData.append('file', blob, 'filename.jpg');
+
+                        // fetch(`/cms/save/${dados.id}`, { // Substituir URL conforme necessário
+                        //     method: 'POST',
+                        //     body: formData
+                        // })
+                        // .then(response => response.json())
+                        // .then(data => {
+                        //     console.log(data);
+                        //     cropperInstance.destroy();
+                        //     cropperInstance = null;
+                        //     isEditing = false;
+                        //     editBtn.querySelector('.icon').classList.add('fa-pencil');
+                        //     editBtn.querySelector('.icon').classList.remove('fa-rotate-right');
+                        // })
+                        // .catch(error => {
+                        //     console.error('Error:', error);
+                        // });
+                    });
                 }
             });
         });
     }
 }
+
 
 
 function createButton(classes, iconClass, params = [], tag = 'a') {
@@ -67,3 +118,4 @@ function createButton(classes, iconClass, params = [], tag = 'a') {
         conteudo: `<em class="icon ${iconClass}"></em>`
     });
 }
+

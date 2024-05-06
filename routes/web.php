@@ -1,6 +1,4 @@
 <?php
-
-
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CrudsController;
@@ -15,8 +13,10 @@ use App\Http\Controllers\CMS\GaleriaController;
 use App\Http\Controllers\CMS\DashboardController;
 use App\Http\Controllers\CMS\RedesSociaisController;
 use App\Http\Controllers\CMS\ConfiguraçõesController;
+use App\Http\Controllers\CMS\TimelineController;
 use App\Http\Controllers\Portal\JardimController;
 use App\Http\Controllers\Portal\PortalController;
+use App\Http\Controllers\Portal\TimelineController as PortalTimelineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +38,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Portal
-Route::get('/', [PortalController::class, 'index'])->name('home.index');
-Route::get('/jardim/{slug}', [JardimController::class, 'index'])->name('jardim.index');
 Route::get('api/jardim/{slug}', [JardimController::class, 'indexApi']);
+Route::get('/jardim', [PortalController::class, 'index'])->name('home.index');
+Route::get('/jardim/{slug}', [JardimController::class, 'index'])->name('jardim.index');
+Route::get('/timeline', [PortalTimelineController::class, 'index'])->name('timeline.index');
 
 // CMS
 Route::middleware('auth')->prefix('cms')->group(function () {
@@ -54,6 +55,7 @@ Route::middleware('auth')->prefix('cms')->group(function () {
     Route::middleware(['can:read_cargos'])->resource('/cargos', RolesController::class);
     Route::middleware(['can:read_galeria'])->resource('/galeria', GaleriaController::class);
     Route::middleware(['can:read_usuarios'])->resource('/usuarios', UserController::class);
+    Route::middleware(['can:read_timeline'])->resource('/timeline', TimelineController::class);
 
     Route::prefix('api')->group(function () {
         Route::get('/cruds', [CrudsController::class, 'indexAPI']);
@@ -62,6 +64,7 @@ Route::middleware('auth')->prefix('cms')->group(function () {
         Route::get('/users', [UserController::class, 'indexAPI']);
         Route::get('/cargos', [RolesController::class, 'indexAPI']);
         Route::get('/galeria', [GaleriaController::class, 'indexAPI']);
+        Route::get('/timeline', [TimelineController::class, 'indexAPI']);
     });
 
     // Update API
@@ -82,4 +85,3 @@ Route::middleware('auth')->prefix('cms')->group(function () {
     // Utils
     Route::delete('delete/{tabela}/{id}', [DeleteController::class, 'delete'])->name('delete');
 });
-

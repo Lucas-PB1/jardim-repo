@@ -17,10 +17,11 @@ class PermissionSeeder extends Seeder
         $modules = [
             'Cruds',
             'Logs',
-            'Usuarios',
             'Cargos',
             'Galeria',
-            'Redes Sociais'
+            'Usuarios',
+            'Timeline',
+            'Redes Sociais',
         ];
 
         collect($modules)->each(
